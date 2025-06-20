@@ -1,0 +1,176 @@
+[gd_scene load_steps=3 format=3 uid="uid://1gaqxc8lkvbc"]
+
+[ext_resource type="Script" uid="uid://d5a061pe5ub5" path="res://test/basic_carousel_tween/basic_carousel.gd" id="1_he6kp"]
+[ext_resource type="Texture2D" uid="uid://i0as5ify5rt6" path="res://assets/lockpick/pinhole_locked.png" id="2_vblmw"]
+
+[node name="BasicCarousel" type="Control" node_paths=PackedStringArray("target_positions", "items")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_he6kp")
+target_positions = NodePath("Targets")
+items = NodePath("Items")
+
+[node name="Items" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Items"]
+layout_mode = 1
+offset_right = 10.0
+offset_bottom = 30.0
+texture = ExtResource("2_vblmw")
+
+[node name="TextureRect2" type="TextureRect" parent="Items"]
+layout_mode = 1
+offset_right = 10.0
+offset_bottom = 30.0
+texture = ExtResource("2_vblmw")
+
+[node name="TextureRect3" type="TextureRect" parent="Items"]
+layout_mode = 1
+offset_right = 10.0
+offset_bottom = 30.0
+texture = ExtResource("2_vblmw")
+
+[node name="TextureRect4" type="TextureRect" parent="Items"]
+layout_mode = 1
+offset_right = 10.0
+offset_bottom = 30.0
+texture = ExtResource("2_vblmw")
+
+[node name="TextureRect5" type="TextureRect" parent="Items"]
+layout_mode = 1
+offset_right = 10.0
+offset_bottom = 30.0
+texture = ExtResource("2_vblmw")
+
+[node name="TextureRect6" type="TextureRect" parent="Items"]
+layout_mode = 1
+offset_right = 10.0
+offset_bottom = 30.0
+texture = ExtResource("2_vblmw")
+
+[node name="Control" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TargetRect" type="ColorRect" parent="Control"]
+custom_minimum_size = Vector2(20, 100)
+layout_mode = 0
+offset_left = 80.0
+offset_top = 132.0
+offset_right = 100.0
+offset_bottom = 232.0
+size_flags_horizontal = 3
+color = Color(0, 1, 1, 0.435294)
+
+[node name="TargetRect2" type="ColorRect" parent="Control"]
+custom_minimum_size = Vector2(20, 100)
+layout_mode = 0
+offset_left = 206.0
+offset_top = 127.0
+offset_right = 226.0
+offset_bottom = 227.0
+size_flags_horizontal = 3
+color = Color(0, 1, 1, 0.435294)
+
+[node name="TargetRect3" type="ColorRect" parent="Control"]
+custom_minimum_size = Vector2(20, 100)
+layout_mode = 0
+offset_left = 262.0
+offset_top = 129.0
+offset_right = 282.0
+offset_bottom = 229.0
+size_flags_horizontal = 3
+color = Color(0, 1, 1, 0.435294)
+
+[node name="TargetRect4" type="ColorRect" parent="Control"]
+custom_minimum_size = Vector2(20, 100)
+layout_mode = 0
+offset_left = 337.0
+offset_top = 127.0
+offset_right = 357.0
+offset_bottom = 227.0
+size_flags_horizontal = 3
+color = Color(0, 1, 1, 0.435294)
+
+[node name="TargetRect5" type="ColorRect" parent="Control"]
+custom_minimum_size = Vector2(20, 100)
+layout_mode = 0
+offset_left = 422.0
+offset_top = 140.0
+offset_right = 442.0
+offset_bottom = 240.0
+size_flags_horizontal = 3
+color = Color(0, 1, 1, 0.435294)
+
+[node name="Targets" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TargetRect" type="Control" parent="Targets"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TargetRect2" type="Control" parent="Targets"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TargetRect3" type="Control" parent="Targets"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TargetRect4" type="Control" parent="Targets"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TargetRect5" type="Control" parent="Targets"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TargetRect6" type="Control" parent="Targets"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TargetRect7" type="Control" parent="Targets"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TargetRect8" type="Control" parent="Targets"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TargetRect9" type="Control" parent="Targets"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TargetRect10" type="Control" parent="Targets"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TargetRect11" type="Control" parent="Targets"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
