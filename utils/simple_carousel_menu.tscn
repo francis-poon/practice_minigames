@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://b13bvgki81vog"]
+
+[ext_resource type="Script" uid="uid://sn2pkopo8w25" path="res://utils/simple_carousel_menu.gd" id="1_8fs5v"]
+
+[node name="SimpleCarouselMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8fs5v")

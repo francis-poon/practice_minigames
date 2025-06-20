@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://bpwva05wfvct2"]
+
+[ext_resource type="Script" uid="uid://c0h1a7bco5wgf" path="res://06-29 lockpick/pinhole_game.gd" id="1_t758r"]
+[ext_resource type="Texture2D" uid="uid://bk1k3alsntrws" path="res://assets/lockpick/green_circle.png" id="2_gwldf"]
+[ext_resource type="Texture2D" uid="uid://bntan575h3eb6" path="res://assets/lockpick/yellow_circle.png" id="3_rj5de"]
+[ext_resource type="Texture2D" uid="uid://14fikuwr0ilx" path="res://assets/lockpick/small_pink_circle.png" id="4_d30wm"]
+[ext_resource type="Texture2D" uid="uid://qaiqbnq5e5j6" path="res://assets/lockpick/white_circle.png" id="5_nkfvq"]
+
+[node name="PinholeGame" type="Node2D" node_paths=PackedStringArray("lockpick", "label", "lock_pick_indicator", "chamber_ring")]
+script = ExtResource("1_t758r")
+lockpick = NodePath("Node2D")
+label = NodePath("Label")
+starting_color = Color(0.921569, 0.678431, 0.152941, 1)
+good_color = Color(0.466667, 0.658824, 0.435294, 1)
+bad_color = Color(0.921569, 0.247059, 0.184314, 1)
+lock_pick_indicator = NodePath("LockPickIndicator")
+unlocked_chamber_texture = ExtResource("2_gwldf")
+locked_chamber_texture = ExtResource("3_rj5de")
+chamber_ring = NodePath("lock")
+
+[node name="lock" type="Sprite2D" parent="."]
+texture = ExtResource("3_rj5de")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="lockpick" type="Sprite2D" parent="Node2D"]
+position = Vector2(47, 0)
+texture = ExtResource("4_d30wm")
+
+[node name="Button" type="Button" parent="."]
+visible = false
+offset_left = 72.0
+offset_top = -22.0
+offset_right = 119.0
+offset_bottom = 24.0
+
+[node name="LockPickIndicator" type="Sprite2D" parent="."]
+self_modulate = Color(0.921569, 0.678431, 0.152941, 1)
+texture = ExtResource("5_nkfvq")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "test"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[connection signal="button_down" from="Button" to="." method="_new"]

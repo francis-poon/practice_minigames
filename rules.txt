@@ -1,0 +1,4 @@
+1 Week Minigame Rules
+
+1. Development for a game must stop after 7 days
+2. If development for another game finishes before 7 days, you can go back and work on a previously incomplete game

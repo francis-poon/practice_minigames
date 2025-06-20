@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpicf8rkxc4av"]
+
+[ext_resource type="Script" uid="uid://dffahrsupfuyr" path="res://test/test_angle_diff/test_angle_diff.gd" id="1_24iw7"]
+
+[node name="TestAngleDiff" type="Node2D" node_paths=PackedStringArray("line_1", "line_2", "label")]
+script = ExtResource("1_24iw7")
+line_1 = NodePath("ColorRect")
+line_2 = NodePath("ColorRect2")
+label = NodePath("CanvasLayer/Label")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 80.0
+offset_bottom = 2.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_right = 80.0
+offset_bottom = 2.0
+color = Color(0, 0, 0, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Camera2D" type="Camera2D" parent="."]

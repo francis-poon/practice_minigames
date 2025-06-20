@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://drm44p2n08bkk"]
+
+[ext_resource type="Script" uid="uid://ca4lojtnx311r" path="res://06-29 lockpick/lock_pick_game.gd" id="1_8opr7"]
+[ext_resource type="PackedScene" uid="uid://bpwva05wfvct2" path="res://06-29 lockpick/pinhole_game.tscn" id="1_of5ry"]
+
+[node name="LockPickGame" type="Node2D"]
+script = ExtResource("1_8opr7")
+
+[node name="Pinholes" type="Node" parent="."]
+
+[node name="PinholeGame" parent="Pinholes" instance=ExtResource("1_of5ry")]
+
+[node name="PinholeGame2" parent="Pinholes" instance=ExtResource("1_of5ry")]
+
+[node name="PinholeGame3" parent="Pinholes" instance=ExtResource("1_of5ry")]
