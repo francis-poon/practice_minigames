@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbfl4ssphfcuf"]
+
+[ext_resource type="Script" uid="uid://so3b8jym056y" path="res://07-07_07-13 fruit ninja/spawn_point.gd" id="1_ekfr4"]
+[ext_resource type="Texture2D" uid="uid://h4mb86tlrv14" path="res://assets/blacknwhite/arrows.png" id="2_nf2bd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnvde"]
+atlas = ExtResource("2_nf2bd")
+region = Rect2(0, 0, 23, 23)
+
+[node name="0" type="Node2D" node_paths=PackedStringArray("name_label")]
+script = ExtResource("1_ekfr4")
+name_label = NodePath("Label")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_gnvde")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1

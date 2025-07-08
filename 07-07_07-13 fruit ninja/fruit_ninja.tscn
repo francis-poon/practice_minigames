@@ -1,0 +1,170 @@
+[gd_scene load_steps=21 format=3 uid="uid://w3vupio7v2p"]
+
+[ext_resource type="Script" uid="uid://dn2tnchgic04x" path="res://07-07_07-13 fruit ninja/fruit_ninja.gd" id="1_cgo0t"]
+[ext_resource type="PackedScene" uid="uid://b1lffgynjolq" path="res://07-07_07-13 fruit ninja/fruit.tscn" id="2_dfofv"]
+[ext_resource type="Script" uid="uid://ddkklhip2cnvf" path="res://07-07_07-13 fruit ninja/spawn_points.gd" id="3_gnvde"]
+[ext_resource type="FontFile" uid="uid://dig8d2l66j4yw" path="res://assets/fonts/Pixeloid_Font_0_5/OpenType (.otf)/PixeloidMono.otf" id="3_lahmw"]
+[ext_resource type="Script" uid="uid://chgbeuiayesb7" path="res://07-07_07-13 fruit ninja/level_manager.gd" id="3_snfq6"]
+[ext_resource type="Script" uid="uid://bpgtn81b3delx" path="res://07-07_07-13 fruit ninja/level_data/level_data.gd" id="4_8gu6a"]
+[ext_resource type="Resource" uid="uid://cc84jtynnatbx" path="res://07-07_07-13 fruit ninja/level_data/level_5.tres" id="4_kg1bc"]
+[ext_resource type="Resource" uid="uid://bcd7qdufqqpm8" path="res://07-07_07-13 fruit ninja/level_data/level_1.tres" id="5_1xcqd"]
+[ext_resource type="Resource" uid="uid://c4kmiuwd05ns0" path="res://07-07_07-13 fruit ninja/level_data/level_2.tres" id="5_bgmj1"]
+[ext_resource type="Resource" uid="uid://c0ateeh663wvy" path="res://07-07_07-13 fruit ninja/level_data/level_3.tres" id="6_yne7k"]
+[ext_resource type="Resource" uid="uid://cyj2qldn6pouv" path="res://07-07_07-13 fruit ninja/level_data/level_4.tres" id="7_bgmj1"]
+[ext_resource type="PackedScene" uid="uid://cbfl4ssphfcuf" path="res://07-07_07-13 fruit ninja/spawn_point.tscn" id="7_kg1bc"]
+[ext_resource type="Resource" uid="uid://cv81a3do7gp5n" path="res://07-07_07-13 fruit ninja/level_data/level_6.tres" id="9_vxltc"]
+[ext_resource type="Resource" uid="uid://dj5pr6ckmnbh1" path="res://07-07_07-13 fruit ninja/level_data/level_7.tres" id="10_s7r78"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_84wf3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gnvde"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_snfq6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oa5yt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kg1bc"]
+
+[sub_resource type="Theme" id="Theme_8gu6a"]
+Button/colors/font_disabled_color = Color(0.87451, 0.87451, 0.87451, 1)
+Button/font_sizes/font_size = 36
+Button/styles/disabled = SubResource("StyleBoxEmpty_84wf3")
+Button/styles/focus = SubResource("StyleBoxEmpty_gnvde")
+Button/styles/hover = SubResource("StyleBoxEmpty_snfq6")
+Button/styles/normal = SubResource("StyleBoxEmpty_oa5yt")
+Button/styles/pressed = SubResource("StyleBoxEmpty_kg1bc")
+
+[node name="FruitNinja" type="Node2D" node_paths=PackedStringArray("start_button", "start_screen_label", "round_label", "level_manager")]
+script = ExtResource("1_cgo0t")
+start_button = NodePath("CanvasLayer2/Button")
+start_screen_label = NodePath("CanvasLayer2/StartScreenLabel")
+round_label = NodePath("CanvasLayer2/RoundLabel")
+level_manager = NodePath("LevelManager")
+
+[node name="LevelManager" type="Node" parent="." node_paths=PackedStringArray("spawn_points")]
+script = ExtResource("3_snfq6")
+level_list = Array[ExtResource("4_8gu6a")]([ExtResource("5_1xcqd"), ExtResource("5_bgmj1"), ExtResource("6_yne7k"), ExtResource("7_bgmj1"), ExtResource("4_kg1bc"), ExtResource("9_vxltc"), ExtResource("10_s7r78")])
+fruit_scene = ExtResource("2_dfofv")
+spawn_points = NodePath("../SpawnPoints")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+script = ExtResource("3_gnvde")
+
+[node name="0" parent="SpawnPoints" instance=ExtResource("7_kg1bc")]
+position = Vector2(-144, 144)
+
+[node name="1" parent="SpawnPoints" instance=ExtResource("7_kg1bc")]
+position = Vector2(-128, 144)
+
+[node name="2" parent="SpawnPoints" instance=ExtResource("7_kg1bc")]
+position = Vector2(-112, 144)
+
+[node name="3" parent="SpawnPoints" instance=ExtResource("7_kg1bc")]
+position = Vector2(-96, 144)
+
+[node name="4" parent="SpawnPoints" instance=ExtResource("7_kg1bc")]
+position = Vector2(-80, 144)
+
+[node name="5" parent="SpawnPoints" instance=ExtResource("7_kg1bc")]
+position = Vector2(-64, 144)
+
+[node name="6" parent="SpawnPoints" instance=ExtResource("7_kg1bc")]
+position = Vector2(-48, 144)
+
+[node name="7" parent="SpawnPoints" instance=ExtResource("7_kg1bc")]
+position = Vector2(-32, 144)
+
+[node name="8" parent="SpawnPoints" instance=ExtResource("7_kg1bc")]
+position = Vector2(-16, 144)
+
+[node name="9" parent="SpawnPoints" instance=ExtResource("7_kg1bc")]
+position = Vector2(0, 144)
+
+[node name="10" parent="SpawnPoints" instance=ExtResource("7_kg1bc")]
+position = Vector2(16, 144)
+
+[node name="11" parent="SpawnPoints" instance=ExtResource("7_kg1bc")]
+position = Vector2(32, 144)
+
+[node name="12" parent="SpawnPoints" instance=ExtResource("7_kg1bc")]
+position = Vector2(48, 144)
+
+[node name="13" parent="SpawnPoints" instance=ExtResource("7_kg1bc")]
+position = Vector2(64, 144)
+
+[node name="14" parent="SpawnPoints" instance=ExtResource("7_kg1bc")]
+position = Vector2(80, 144)
+
+[node name="15" parent="SpawnPoints" instance=ExtResource("7_kg1bc")]
+position = Vector2(96, 144)
+
+[node name="16" parent="SpawnPoints" instance=ExtResource("7_kg1bc")]
+position = Vector2(112, 144)
+
+[node name="17" parent="SpawnPoints" instance=ExtResource("7_kg1bc")]
+position = Vector2(128, 144)
+
+[node name="18" parent="SpawnPoints" instance=ExtResource("7_kg1bc")]
+position = Vector2(144, 144)
+
+[node name="19" parent="SpawnPoints" instance=ExtResource("7_kg1bc")]
+position = Vector2(-208, 130)
+rotation = 0.523599
+
+[node name="20" parent="SpawnPoints" instance=ExtResource("7_kg1bc")]
+position = Vector2(208, 130)
+rotation = -0.523599
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="StartScreenLabel" type="RichTextLabel" parent="CanvasLayer2"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("3_lahmw")
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "test"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer2"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -7.0
+offset_top = 29.0
+offset_right = -7.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_8gu6a")
+theme_override_fonts/font = ExtResource("3_lahmw")
+
+[node name="RoundLabel" type="Label" parent="CanvasLayer2"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_lahmw")
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 1
+
+[connection signal="pressed" from="CanvasLayer2/Button" to="." method="new_game"]

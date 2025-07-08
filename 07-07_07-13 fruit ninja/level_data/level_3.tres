@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://c0ateeh663wvy"]
+
+[ext_resource type="Script" uid="uid://bpgtn81b3delx" path="res://07-07_07-13 fruit ninja/level_data/level_data.gd" id="1_1jsha"]
+
+[resource]
+script = ExtResource("1_1jsha")
+spawn_point_order = [1, 17, 5, 13, 9]
+spawn_delay = Array[float]([0.0, 1.0, 0.0, 1.0, 0.0])
+target_order = [0, 1, 2, 3, 4]
+metadata/_custom_type_script = "uid://bpgtn81b3delx"
