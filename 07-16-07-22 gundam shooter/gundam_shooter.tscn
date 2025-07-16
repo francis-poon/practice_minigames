@@ -1,0 +1,340 @@
+[gd_scene load_steps=32 format=3 uid="uid://00ekigx16v67"]
+
+[ext_resource type="PackedScene" uid="uid://wotmb6kv33cb" path="res://07-16-07-22 gundam shooter/targeting_system.tscn" id="1_3lown"]
+[ext_resource type="Script" uid="uid://cvav3q184vqls" path="res://07-16-07-22 gundam shooter/player.gd" id="1_pkv8e"]
+[ext_resource type="Script" uid="uid://b88opgohtj2vl" path="res://07-16-07-22 gundam shooter/gundam_shooter.gd" id="1_vb4ie"]
+[ext_resource type="Script" uid="uid://bg2au71pf0a7a" path="res://07-16-07-22 gundam shooter/enemy_spawner.gd" id="2_bptq2"]
+[ext_resource type="Texture2D" uid="uid://i8pkolgal7j1" path="res://assets/blacknwhite/peach.png" id="2_vwi0l"]
+[ext_resource type="PackedScene" uid="uid://dhsosy100uahq" path="res://07-16-07-22 gundam shooter/gundam_enemy.tscn" id="3_5d5cf"]
+[ext_resource type="Script" uid="uid://cstaoi3auflv" path="res://07-16-07-22 gundam shooter/camera_2d.gd" id="3_uevvg"]
+[ext_resource type="Script" uid="uid://b8nhbkle3jsdt" path="res://07-16-07-22 gundam shooter/ammo.gd" id="3_vinl5"]
+[ext_resource type="Script" path="res://07-16-07-22 gundam shooter/game_tick.gd" id="4_rfduc"]
+[ext_resource type="Theme" uid="uid://bppg3r71v8m3k" path="res://themes/clear_button_theme.tres" id="5_2gp4b"]
+[ext_resource type="FontFile" uid="uid://dig8d2l66j4yw" path="res://assets/fonts/Pixeloid_Font_0_5/OpenType (.otf)/PixeloidMono.otf" id="6_chx16"]
+[ext_resource type="Script" uid="uid://2yudgkpvmclv" path="res://07-16-07-22 gundam shooter/health.gd" id="8_fbgic"]
+[ext_resource type="Script" path="res://07-16-07-22 gundam shooter/score.gd" id="9_0kejc"]
+[ext_resource type="Texture2D" uid="uid://c1wpfm24upkr6" path="res://assets/gundam_shooter/cockpit.png" id="9_0m111"]
+[ext_resource type="Script" uid="uid://dqk8iqnstq6c4" path="res://07-16-07-22 gundam shooter/beam_rifle.gd" id="10_wg8ch"]
+[ext_resource type="PackedScene" uid="uid://dcit3vbyva8un" path="res://07-16-07-22 gundam shooter/gundam_gun_beam.tscn" id="12_nohw1"]
+[ext_resource type="Texture2D" uid="uid://d1ofr3r23f6an" path="res://assets/backgrounds/stary_sky_background.png" id="12_ot8x4"]
+[ext_resource type="Script" uid="uid://d2mij8jbdqs57" path="res://07-16-07-22 gundam shooter/enemy_radar.gd" id="16_afm3r"]
+[ext_resource type="Texture2D" uid="uid://bjox4ymxuka1l" path="res://assets/gundam_shooter/up_enemy_indicator.png" id="17_pf5jf"]
+[ext_resource type="Texture2D" uid="uid://bv31h1a5lcrdl" path="res://assets/gundam_shooter/ammo_bar_overlay.png" id="17_x4hch"]
+[ext_resource type="Texture2D" uid="uid://dnfl8c8wma1db" path="res://assets/gundam_shooter/left_enemy_indicator.png" id="18_0kejc"]
+[ext_resource type="Texture2D" uid="uid://dyewljhltf8sl" path="res://assets/gundam_shooter/health_bar_overlay.png" id="18_2ykut"]
+[ext_resource type="Texture2D" uid="uid://cja28jwafhntu" path="res://assets/gundam_shooter/ammo_bar.png" id="18_npung"]
+[ext_resource type="Texture2D" uid="uid://c73bk7umksh8k" path="res://assets/gundam_shooter/right_enemy_indicator.png" id="19_rfduc"]
+[ext_resource type="Texture2D" uid="uid://d1mjtywx40o88" path="res://assets/gundam_shooter/health_bar.png" id="19_x4hch"]
+[ext_resource type="Texture2D" uid="uid://dltlw7061j4yl" path="res://assets/gundam_shooter/down_enemy_indicator.png" id="20_ouyhn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x4hch"]
+size = Vector2(94, 881)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_npung"]
+size = Vector2(79, 879.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1k1ob"]
+size = Vector2(1280, 79)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ptfdu"]
+size = Vector2(1280, 83)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5d5cf"]
+size = Vector2(945, 454)
+
+[node name="GundamShooter" type="Node2D" node_paths=PackedStringArray("player", "_start_screen_label", "_start_button", "_score")]
+script = ExtResource("1_vb4ie")
+player = NodePath("Player")
+_start_screen_label = NodePath("HUD/StartScreenLabel")
+_start_button = NodePath("HUD/StartButton")
+_score = NodePath("HUD/Score")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("12_ot8x4")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = -640
+limit_top = -360
+limit_right = 640
+limit_bottom = 360
+script = ExtResource("3_uevvg")
+move_speed = 200.0
+
+[node name="GameTick" type="Timer" parent="."]
+autostart = true
+script = ExtResource("4_rfduc")
+
+[node name="EnemyBoundary" type="Node" parent="."]
+
+[node name="RightWall" type="StaticBody2D" parent="EnemyBoundary"]
+position = Vector2(687, 0)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyBoundary/RightWall"]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_x4hch")
+
+[node name="LeftWall" type="StaticBody2D" parent="EnemyBoundary"]
+position = Vector2(-680, 0)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyBoundary/LeftWall"]
+position = Vector2(0.5, 0.75)
+shape = SubResource("RectangleShape2D_npung")
+
+[node name="TopWall" type="StaticBody2D" parent="EnemyBoundary"]
+position = Vector2(0, -367)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyBoundary/TopWall"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_1k1ob")
+
+[node name="BottomWall" type="StaticBody2D" parent="EnemyBoundary"]
+position = Vector2(-1, 339)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyBoundary/BottomWall"]
+position = Vector2(1, -1.5)
+shape = SubResource("RectangleShape2D_ptfdu")
+
+[node name="EnemySpawner" type="Node" parent="." node_paths=PackedStringArray("spawn_area", "_spawn_timer", "_enemies")]
+script = ExtResource("2_bptq2")
+spawn_area = NodePath("SpawnArea")
+enemy = ExtResource("3_5d5cf")
+_spawn_timer = NodePath("Timer")
+_enemies = NodePath("Enemies")
+
+[node name="SpawnArea" type="CollisionShape2D" parent="EnemySpawner"]
+position = Vector2(-11.5, -21)
+shape = SubResource("RectangleShape2D_5d5cf")
+disabled = true
+
+[node name="Timer" type="Timer" parent="EnemySpawner"]
+wait_time = 2.0
+
+[node name="Enemies" type="Node" parent="EnemySpawner"]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="StartScreenLabel" type="RichTextLabel" parent="HUD"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 25.0
+offset_bottom = -84.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("6_chx16")
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "test"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartButton" type="Button" parent="HUD"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_2gp4b")
+
+[node name="CockpitBase" type="TextureRect" parent="HUD"]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_0m111")
+
+[node name="Score" type="Label" parent="HUD"]
+offset_left = 162.0
+offset_top = 272.0
+offset_right = 258.0
+offset_bottom = 316.0
+theme_override_fonts/font = ExtResource("6_chx16")
+theme_override_font_sizes/font_size = 9
+text = "Score: 0"
+vertical_alignment = 1
+script = ExtResource("9_0kejc")
+
+[node name="LevelManager" type="Node" parent="."]
+
+[node name="Player" type="Node" parent="." node_paths=PackedStringArray("_health", "_targeting_system", "_beam_rifle") groups=["player"]]
+script = ExtResource("1_pkv8e")
+sprite_texture = ExtResource("2_vwi0l")
+max_health = 5.0
+_health = NodePath("Health")
+_targeting_system = NodePath("Targeting")
+_beam_rifle = NodePath("BeamRifle")
+
+[node name="Targeting" parent="Player" instance=ExtResource("1_3lown")]
+
+[node name="BeamRifle" type="Node" parent="Player" node_paths=PackedStringArray("_beam_origin", "_ammo")]
+script = ExtResource("10_wg8ch")
+beam_scene = ExtResource("12_nohw1")
+_beam_origin = NodePath("CanvasLayer/BeamOrigin")
+_ammo = NodePath("Ammo")
+
+[node name="Ammo" type="Node" parent="Player/BeamRifle" node_paths=PackedStringArray("_ammo_bar_left", "_ammo_bar_right")]
+script = ExtResource("3_vinl5")
+_ammo_bar_left = NodePath("CanvasLayer/LeftAmmoBar")
+_ammo_bar_right = NodePath("CanvasLayer/RightAmmoBar")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Player/BeamRifle/Ammo"]
+layer = 2
+
+[node name="LeftAmmoBar" type="TextureProgressBar" parent="Player/BeamRifle/Ammo/CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -7.0
+offset_top = -33.0
+offset_right = 52.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(-1, 1)
+value = 50.0
+texture_over = ExtResource("17_x4hch")
+texture_progress = ExtResource("18_npung")
+
+[node name="RightAmmoBar" type="TextureProgressBar" parent="Player/BeamRifle/Ammo/CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = -33.0
+offset_right = 66.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 50.0
+texture_over = ExtResource("17_x4hch")
+texture_progress = ExtResource("18_npung")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Player/BeamRifle"]
+
+[node name="BeamOrigin" type="Control" parent="Player/BeamRifle/CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 610.0
+offset_top = 397.0
+offset_right = 650.0
+offset_bottom = 437.0
+
+[node name="Health" type="Node" parent="Player" node_paths=PackedStringArray("_health_bar")]
+script = ExtResource("8_fbgic")
+_health_bar = NodePath("CanvasLayer/TextureProgressBar")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Player/Health"]
+layer = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Player/Health/CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -9.0
+offset_top = 109.0
+offset_right = 9.0
+offset_bottom = 142.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 100.0
+fill_mode = 3
+texture_over = ExtResource("18_2ykut")
+texture_progress = ExtResource("19_x4hch")
+
+[node name="EnemyRadar" type="Node" parent="Player" node_paths=PackedStringArray("detection_rect", "screen_center", "_radar_scan_timer", "up_indicator", "down_indicator", "left_indicator", "right_indicator")]
+script = ExtResource("16_afm3r")
+radar_scan_time = 0.25
+detection_rect = NodePath("CanvasLayer/DetectionRect")
+screen_center = NodePath("CanvasLayer/ScreenCenter")
+_radar_scan_timer = NodePath("RadarScanTimer")
+up_indicator = NodePath("CanvasLayer/UpIndicator")
+down_indicator = NodePath("CanvasLayer/DownIndicator")
+left_indicator = NodePath("CanvasLayer/LeftInidicator")
+right_indicator = NodePath("CanvasLayer/RightIndicator")
+
+[node name="RadarScanTimer" type="Timer" parent="Player/EnemyRadar"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Player/EnemyRadar"]
+
+[node name="UpIndicator" type="TextureRect" parent="Player/EnemyRadar/CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("17_pf5jf")
+
+[node name="DownIndicator" type="TextureRect" parent="Player/EnemyRadar/CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -320.0
+offset_top = -360.0
+offset_right = 320.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("20_ouyhn")
+
+[node name="LeftInidicator" type="TextureRect" parent="Player/EnemyRadar/CanvasLayer"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+texture = ExtResource("18_0kejc")
+
+[node name="RightIndicator" type="TextureRect" parent="Player/EnemyRadar/CanvasLayer"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("19_rfduc")
+
+[node name="DetectionRect" type="ColorRect" parent="Player/EnemyRadar/CanvasLayer"]
+offset_left = 112.0
+offset_top = 46.0
+offset_right = 520.0
+offset_bottom = 280.0
+color = Color(1, 1, 1, 0)
+
+[node name="ScreenCenter" type="Control" parent="Player/EnemyRadar/CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 320.0
+offset_top = 150.0
+offset_right = 320.0
+offset_bottom = 150.0
+
+[connection signal="timeout" from="GameTick" to="GameTick" method="_on_timeout"]
+[connection signal="timeout" from="EnemySpawner/Timer" to="EnemySpawner" method="_on_timer_timeout"]
+[connection signal="pressed" from="HUD/StartButton" to="." method="new_game"]
+[connection signal="target_position" from="Player/Targeting" to="Player" method="_on_targeting_target_position"]
+[connection signal="timeout" from="Player/EnemyRadar/RadarScanTimer" to="Player/EnemyRadar" method="_scan"]
