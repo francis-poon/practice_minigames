@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://w3vupio7v2p"]
+[gd_scene load_steps=16 format=3 uid="uid://w3vupio7v2p"]
 
 [ext_resource type="Script" uid="uid://dn2tnchgic04x" path="res://07-07_07-13 fruit ninja/fruit_ninja.gd" id="1_cgo0t"]
 [ext_resource type="PackedScene" uid="uid://b1lffgynjolq" path="res://07-07_07-13 fruit ninja/fruit.tscn" id="2_dfofv"]
@@ -14,25 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cbfl4ssphfcuf" path="res://07-07_07-13 fruit ninja/spawn_point.tscn" id="7_kg1bc"]
 [ext_resource type="Resource" uid="uid://cv81a3do7gp5n" path="res://07-07_07-13 fruit ninja/level_data/level_6.tres" id="9_vxltc"]
 [ext_resource type="Resource" uid="uid://dj5pr6ckmnbh1" path="res://07-07_07-13 fruit ninja/level_data/level_7.tres" id="10_s7r78"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_84wf3"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gnvde"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_snfq6"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oa5yt"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kg1bc"]
-
-[sub_resource type="Theme" id="Theme_8gu6a"]
-Button/colors/font_disabled_color = Color(0.87451, 0.87451, 0.87451, 1)
-Button/font_sizes/font_size = 36
-Button/styles/disabled = SubResource("StyleBoxEmpty_84wf3")
-Button/styles/focus = SubResource("StyleBoxEmpty_gnvde")
-Button/styles/hover = SubResource("StyleBoxEmpty_snfq6")
-Button/styles/normal = SubResource("StyleBoxEmpty_oa5yt")
-Button/styles/pressed = SubResource("StyleBoxEmpty_kg1bc")
+[ext_resource type="Theme" uid="uid://bppg3r71v8m3k" path="res://themes/clear_button_theme.tres" id="15_s7r78"]
 
 [node name="FruitNinja" type="Node2D" node_paths=PackedStringArray("start_button", "start_screen_label", "round_label", "level_manager")]
 script = ExtResource("1_cgo0t")
@@ -155,7 +137,7 @@ offset_right = -7.0
 offset_bottom = 29.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_8gu6a")
+theme = ExtResource("15_s7r78")
 theme_override_fonts/font = ExtResource("3_lahmw")
 
 [node name="RoundLabel" type="Label" parent="CanvasLayer2"]

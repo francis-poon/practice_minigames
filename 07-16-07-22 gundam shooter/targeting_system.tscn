@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://wotmb6kv33cb"]
+
+[ext_resource type="Script" uid="uid://bjyta2ppy08nq" path="res://07-16-07-22 gundam shooter/targeting_system.gd" id="1_swrwh"]
+[ext_resource type="Texture2D" uid="uid://y56pqtbfmiph" path="res://assets/gundam_shooter/target_reticle.png" id="2_8qnpo"]
+[ext_resource type="Texture2D" uid="uid://d25iqe5p4btum" path="res://assets/gundam_shooter/lead_reticle.png" id="3_udvej"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ru8u"]
+size = Vector2(1, 1)
+
+[node name="TargetingSystem" type="Node2D" node_paths=PackedStringArray("target_indicator", "lead_indicator", "target_area")]
+script = ExtResource("1_swrwh")
+target_indicator = NodePath("TargetIndicator")
+lead_indicator = NodePath("LeadIndicator")
+target_area = NodePath("TargetIndicator/Area2D")
+move_speed = 300.0
+
+[node name="TargetIndicator" type="Sprite2D" parent="."]
+texture = ExtResource("2_8qnpo")
+
+[node name="Area2D" type="Area2D" parent="TargetIndicator"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetIndicator/Area2D"]
+shape = SubResource("RectangleShape2D_1ru8u")
+
+[node name="LeadIndicator" type="Sprite2D" parent="."]
+texture = ExtResource("3_udvej")
+
+[connection signal="area_entered" from="TargetIndicator/Area2D" to="." method="_on_area_2d_area_entered"]

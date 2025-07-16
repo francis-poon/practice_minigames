@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcit3vbyva8un"]
+
+[ext_resource type="Script" uid="uid://dilvkhikuj3ce" path="res://07-16-07-22 gundam shooter/gun_beam.gd" id="1_yagw6"]
+
+[sub_resource type="Curve" id="Curve_cvlmf"]
+_data = [Vector2(0.0106383, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0224719), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="GunBeam" type="Node" node_paths=PackedStringArray("line_a", "line_b")]
+script = ExtResource("1_yagw6")
+line_a = NodePath("Line2D2")
+line_b = NodePath("Line2D")
+
+[node name="Line2D2" type="Line2D" parent="."]
+points = PackedVector2Array(246, 180, 0, 0)
+width = 50.0
+width_curve = SubResource("Curve_cvlmf")
+default_color = Color(1, 0.275385, 0.745956, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(246, 180, 0, 0)
+width = 40.0
+width_curve = SubResource("Curve_cvlmf")
+default_color = Color(0.947638, 0.836851, 0.861234, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
